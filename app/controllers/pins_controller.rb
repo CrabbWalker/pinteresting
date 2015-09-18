@@ -22,19 +22,15 @@ class PinsController < ApplicationController
   
   def create
     @pin = Pin.new(pin_params)
-
-    respond_to do |format|
       if @pin.save
         redirect_to @pin, notice: 'Pin was successfully created.'
       else
         render action: 'new'
       end
-    end
   end
 
   
   def update
-    respond_to do |format|
       if @pin.update(pin_params)
         redirect_to @pin, notice: 'Pin was successfully updated.'
         
@@ -47,7 +43,6 @@ class PinsController < ApplicationController
   def destroy
     @pin.destroy
     redirect_to pins_url  
-    end
   end
 
   private
